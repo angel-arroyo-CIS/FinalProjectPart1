@@ -1,0 +1,35 @@
+# Angel Arroyo November 3rd, 2021
+# 1780023
+
+import csv
+file = open("ManufacturerList.csv", 'r')
+myReader = csv.reader(file, delimiter=',')
+
+for row in myReader:
+    print(row)
+
+with open('PriceList.csv', mode='r') as infile:
+    reader = csv.reader(infile)
+    with open('DamagedInventory.csv', mode='w') as outfile:
+        writer = csv.writer(outfile)
+        dict = {rows[0]:rows[1] for rows in reader}
+
+with open('FullInventory.csv', 'w') as csvfile:
+    writer = csv.writer(csvfile, delimiter=',')
+    writer.writerow(row)
+
+
+with open('PriceList.csv', mode='r') as inp:
+    reader = csv.reader(inp)
+    dict_from_csv = {rows[0]:rows[1] for rows in reader}
+
+with open('ServiceDatesList.csv', mode='r') as inp:
+    reader = csv.reader(inp)
+    dict_from_csv2 = {rows[0]:rows[1] for rows in reader}
+
+with open('PastServiceDate.csv', 'w') as csvfile:
+    writer = csv.writer(csvfile, delimiter=',')
+    writer.writerow(dict_from_csv2)
+
+print(dict_from_csv)
+print(dict_from_csv2)
